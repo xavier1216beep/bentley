@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Continental GTC Speed — Power, beneath the polish</title>
+<meta name="description" content="A scroll-driven tour of the Continental GTC Speed: open-air grand touring, an Ultra Performance Hybrid powertrain and a hand-crafted cabin.">
+<meta name="theme-color" content="#050806">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preload" as="image" href="assets/frames/f_0001.webp">
+</head>
+<body class="is-loading">
+
+<!-- Loader -->
+<div class="loader" id="loader" role="status" aria-live="polite">
+  <img class="loader__logo" src="assets/logo.png" alt="Bentley" width="150">
+  <div class="loader__bar"><span id="loaderBar"></span></div>
+  <p class="loader__pct"><span id="loaderPct">0</span>%</p>
+</div>
+
+<!-- Navigation -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#film" aria-label="Continental GTC Speed — home">
+    <img src="assets/logo.png" alt="Bentley" height="38">
+  </a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#film">The Film</a>
+    <a href="#overview">Performance</a>
+    <a href="#details">Details</a>
+    <a href="#specs">Specs</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="btn btn--ghost nav__cta" href="#contact">Book a test drive</a>
+  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+</header>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="#film">The Film</a>
+  <a href="#overview">Performance</a>
+  <a href="#details">Details</a>
+  <a href="#specs">Specs</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#contact">Contact</a>
+  <a class="btn btn--gold" href="#contact">Book a test drive</a>
+</div>
+
+<main>
+
+<!-- ============ SCROLL-DRIVEN FILM ============ -->
+<section class="film" id="film" aria-label="Continental GTC Speed film">
+  <div class="stage" id="stage">
+    <canvas id="gl" aria-hidden="true"></canvas>
+    <div class="stage__grain"></div>
+
+    <div class="chapters" id="chapters">
+
+      <article class="chapter chapter--left chapter--hero" data-start="0" data-end="0.09">
+        <p class="eyebrow" data-fade>Continental GTC Speed · The Performance Film</p>
+        <h2 class="title title--xl"><span class="line"><span>Power, beneath</span></span><span class="line"><span>the <em>polish.</em></span></span></h2>
+        <p class="copy" data-fade>A grand tourer that wears refinement like a tailored suit — and hides a hybrid heart built to move mountains. Keep scrolling to lift the bodywork.</p>
+      </article>
+
+      <article class="chapter chapter--right" data-start="0.10" data-end="0.19">
+        <p class="eyebrow" data-fade><b>01</b> Open air</p>
+        <h2 class="title"><span class="line"><span>Roof down.</span></span><span class="line"><span><em>World open.</em></span></span></h2>
+        <p class="copy" data-fade>A profile cut from one long breath, a canopy that folds away in silence. Four seats, zero compromise — the horizon simply becomes part of the cabin.</p>
+        <ul class="chips" data-fade><li>Four seats</li><li>Convertible</li><li>All-weather canopy</li></ul>
+      </article>
+
+      <article class="chapter chapter--left" data-start="0.20" data-end="0.29">
+        <p class="eyebrow" data-fade><b>02</b> Powertrain</p>
+        <h2 class="title"><span class="line"><span>Ultra Performance</span></span><span class="line"><span><em>Hybrid.</em></span></span></h2>
+        <p class="copy" data-fade>Beneath the skin a twin-turbo V8 and an electric motor work as one, sending power through all four wheels with unflustered composure.</p>
+        <dl class="metrics" data-fade><div><dt>782<small>PS</small></dt><dd>System output</dd></div><div><dt>1,000<small>Nm</small></dt><dd>System torque</dd></div></dl>
+      </article>
+
+      <article class="chapter chapter--right" data-start="0.30" data-end="0.39">
+        <p class="eyebrow" data-fade><b>03</b> Cabin</p>
+        <h2 class="title"><span class="line"><span>Crafted by hand.</span></span><span class="line"><span><em>Held by hand.</em></span></span></h2>
+        <p class="copy" data-fade>Hand-finished leather, cool-touch metal and diamond-knurled controls. Every surface asks to be touched; every dial answers with precision.</p>
+        <ul class="chips" data-fade><li>Comfort</li><li>Sport</li><li>Custom</li></ul>
+      </article>
+
+      <article class="chapter chapter--left" data-start="0.40" data-end="0.45">
+        <p class="eyebrow" data-fade><b>04</b> Presence</p>
+        <h2 class="title"><span class="line"><span>A face that</span></span><span class="line"><span><em>commands the road.</em></span></span></h2>
+        <p class="copy" data-fade>Jewel-like LED eyes. A grille cut with intent. Even standing still, it announces what is coming.</p>
+      </article>
+
+      <article class="chapter chapter--right" data-start="0.46" data-end="0.59">
+        <p class="eyebrow" data-fade><b>05</b> Combustion</p>
+        <h2 class="title"><span class="line"><span>Fire,</span></span><span class="line"><span><em>engineered.</em></span></span></h2>
+        <p class="copy" data-fade>Inside the 4.0-litre V8, precision becomes spectacle — pistons, valves and turbines choreographed into a single, thunderous crescendo.</p>
+        <dl class="metrics" data-fade><div><dt>4.0<small>L</small></dt><dd>Twin-turbo V8</dd></div><div><dt>600<small>PS</small></dt><dd>Combustion power</dd></div></dl>
+      </article>
+
+      <article class="chapter chapter--left" data-start="0.60" data-end="0.67">
+        <p class="eyebrow" data-fade><b>06</b> Electric</p>
+        <h2 class="title"><span class="line"><span>The quiet</span></span><span class="line"><span><em>reserve.</em></span></span></h2>
+        <p class="copy" data-fade>A 25.9&nbsp;kWh battery holds the silent side of the story — glide through town on electric power alone, then wake the V8 when the road opens up.</p>
+        <dl class="metrics" data-fade><div><dt>81<small>km</small></dt><dd>Electric range</dd></div><div><dt>140<small>km/h</small></dt><dd>EV top speed</dd></div></dl>
+      </article>
+
+      <article class="chapter chapter--right" data-start="0.68" data-end="0.79">
+        <p class="eyebrow" data-fade><b>07</b> Form</p>
+        <h2 class="title"><span class="line"><span>Sculpted</span></span><span class="line"><span><em>in motion.</em></span></span></h2>
+        <p class="copy" data-fade>From the winged bonnet badge to the broad, muscular haunches, light slides across one unbroken surface — while at the rear, power finds its voice.</p>
+      </article>
+
+      <article class="chapter chapter--left" data-start="0.80" data-end="0.87">
+        <p class="eyebrow" data-fade><b>08</b> Stance</p>
+        <h2 class="title"><span class="line"><span>Poised</span></span><span class="line"><span><em>to grip.</em></span></span></h2>
+        <p class="copy" data-fade>Sculpted multi-spoke wheels and a low, wide stance: the final link between 782&nbsp;PS and the tarmac.</p>
+      </article>
+
+      <article class="chapter chapter--center chapter--finale" data-start="0.89" data-end="1">
+        <h2 class="title title--xl"><span class="line"><span>Extraordinary,</span></span><span class="line"><span><em>engineered.</em></span></span></h2>
+        <p class="copy" data-fade>Beauty on the surface. Brutality beneath.</p>
+        <div class="cta-row" data-fade>
+          <a class="btn btn--gold" href="#specs">Explore the specs</a>
+          <a class="btn btn--ghost" href="#contact">Book a test drive</a>
+        </div>
+      </article>
+    </div>
+
+    <aside class="hud" aria-hidden="true">
+      <div class="hud__time"><span id="hudTime">00:00</span><i></i>00:25</div>
+      <ol class="hud__dots" id="hudDots"></ol>
+    </aside>
+    <div class="hud__progress" aria-hidden="true"><span id="hudBar"></span></div>
+    <div class="scroll-cue" id="scrollCue" aria-hidden="true"><span>Scroll</span><i></i></div>
+  </div>
+</section>
+
+<!-- ============ PERFORMANCE / STATS ============ -->
+<section class="section overview" id="overview">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>Performance</p>
+    <h2 class="display" data-reveal>Two hearts.<br><em>One unmistakable character.</em></h2>
+    <p class="lead" data-reveal>Combustion drama when you want it, electric calm when you don't. The Continental GTC Speed pairs a 4.0-litre twin-turbo V8 with a 190&nbsp;PS electric motor — and a gearbox and all-wheel-drive system that make sure none of it goes to waste.</p>
+    <div class="stats">
+      <div class="stat" data-reveal><b data-count="782">0</b><span>PS system output</span></div>
+      <div class="stat" data-reveal><b data-count="1000" data-sep="1">0</b><span>Nm system torque</span></div>
+      <div class="stat" data-reveal><b data-count="3.4" data-dec="1">0</b><span>seconds, 0–100 km/h</span></div>
+      <div class="stat" data-reveal><b data-count="81">0</b><span>km electric range</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DETAILS (horizontal scroll) ============ -->
+<section class="hscroll" id="details" aria-label="Details">
+  <div class="hscroll__pin">
+    <div class="hscroll__head">
+      <p class="eyebrow">Details</p>
+      <h2 class="display display--sm">Look closer.</h2>
+    </div>
+    <div class="hscroll__track" id="track">
+      <figure class="card"><img loading="lazy" src="assets/frames/f_0042.webp" alt="Open-roof convertible seen from above"><figcaption><b>Open air</b><span>Four seats beneath an open sky.</span></figcaption></figure>
+      <figure class="card"><img loading="lazy" src="assets/frames/f_0072.webp" alt="X-ray view of the hybrid powertrain"><figcaption><b>Hybrid architecture</b><span>V8, e-motor and battery in perfect step.</span></figcaption></figure>
+      <figure class="card"><img loading="lazy" src="assets/frames/f_0096.webp" alt="Cream leather cabin"><figcaption><b>The cabin</b><span>Hand-finished leather and cool metal.</span></figcaption></figure>
+      <figure class="card"><img loading="lazy" src="assets/frames/f_0112.webp" alt="Rotary start control and drive modes"><figcaption><b>Command centre</b><span>Knurled dials, drive modes, a single start.</span></figcaption></figure>
+      <figure class="card"><img loading="lazy" src="assets/frames/f_0127.webp" alt="Front fascia with LED headlamps"><figcaption><b>Presence</b><span>LED eyes and a grille cut with intent.</span></figcaption></figure>
+      <figure class="card"><img loading="lazy" src="assets/frames/f_0189.webp" alt="Battery pack glowing blue"><figcaption><b>Electric reserve</b><span>25.9 kWh of silent capability.</span></figcaption></figure>
+      <figure class="card"><img loading="lazy" src="assets/frames/f_0205.webp" alt="Winged badge on the bonnet"><figcaption><b>The wings</b><span>A bonnet badge that says it all.</span></figcaption></figure>
+      <figure class="card"><img loading="lazy" src="assets/frames/f_0251.webp" alt="Sculpted multi-spoke wheel"><figcaption><b>Stance</b><span>Sculpted wheels, low and wide.</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPECS ============ -->
+<section class="section specs" id="specs">
+  <div class="wrap specs__grid">
+    <div class="specs__intro">
+      <p class="eyebrow" data-reveal>Specifications</p>
+      <h2 class="display" data-reveal>The numbers,<br><em>without the noise.</em></h2>
+      <p class="lead" data-reveal>Headline figures for the Continental GTC Speed plug-in hybrid. Figures are indicative — please confirm with your Bentley centre.</p>
+      <a class="btn btn--gold" href="#contact" data-reveal>Request the full brochure</a>
+    </div>
+    <dl class="spec-table">
+      <div class="row" data-reveal><dt>Powertrain</dt><dd>4.0&nbsp;L twin-turbo V8 plug-in hybrid</dd></div>
+      <div class="row" data-reveal><dt>System output</dt><dd>782&nbsp;PS (771&nbsp;hp / 574&nbsp;kW)</dd></div>
+      <div class="row" data-reveal><dt>System torque</dt><dd>1,000&nbsp;Nm</dd></div>
+      <div class="row" data-reveal><dt>V8 output</dt><dd>600&nbsp;PS / 800&nbsp;Nm</dd></div>
+      <div class="row" data-reveal><dt>Electric motor</dt><dd>190&nbsp;PS / 450&nbsp;Nm</dd></div>
+      <div class="row" data-reveal><dt>0–100 km/h</dt><dd>3.4&nbsp;seconds</dd></div>
+      <div class="row" data-reveal><dt>Battery</dt><dd>25.9&nbsp;kWh gross · 22&nbsp;kWh usable</dd></div>
+      <div class="row" data-reveal><dt>Electric range</dt><dd>Up to 81&nbsp;km</dd></div>
+      <div class="row" data-reveal><dt>EV top speed</dt><dd>140&nbsp;km/h</dd></div>
+      <div class="row" data-reveal><dt>Drivetrain</dt><dd>8-speed automatic · all-wheel drive</dd></div>
+      <div class="row" data-reveal><dt>Body</dt><dd>Convertible · four seats</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="section pricing" id="pricing">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>Pricing</p>
+    <h2 class="display" data-reveal>Choose your <em>character.</em></h2>
+    <p class="lead" data-reveal>Three example specifications to start the conversation. Every car is built to order, and no two leave Crewe alike.</p>
+    <div class="plans">
+      <article class="plan" data-reveal>
+        <h3>Speed</h3>
+        <p class="plan__tag">The essential Speed</p>
+        <p class="price"><small>From</small><b data-price="330000">$330,000</b></p>
+        <ul><li>Ultra Performance Hybrid</li><li>All-wheel drive</li><li>Hand-finished leather cabin</li><li>Rotary drive-mode control</li></ul>
+        <a class="btn btn--ghost" href="#contact" data-plan="Speed">Enquire</a>
+      </article>
+      <article class="plan plan--featured" data-reveal>
+        <span class="plan__badge">Most requested</span>
+        <h3>Speed · Tour</h3>
+        <p class="plan__tag">Made for the long road</p>
+        <p class="price"><small>From</small><b data-price="352000">$352,000</b></p>
+        <ul><li>Everything in Speed</li><li>Touring comfort pack</li><li>Upgraded audio &amp; driver assistance</li><li>Extended colour palette</li></ul>
+        <a class="btn btn--gold" href="#contact" data-plan="Speed · Tour">Enquire</a>
+      </article>
+      <article class="plan" data-reveal>
+        <h3>Speed · Blackline</h3>
+        <p class="plan__tag">Darker. Sharper.</p>
+        <p class="price"><small>From</small><b data-price="368000">$368,000</b></p>
+        <ul><li>Everything in Speed</li><li>Gloss-black exterior details</li><li>Sport-focused cabin finish</li><li>Statement wheel design</li></ul>
+        <a class="btn btn--ghost" href="#contact" data-plan="Speed · Blackline">Enquire</a>
+      </article>
+    </div>
+    <p class="fineprint" data-reveal>Example pricing for demonstration only — replace with official figures. Excludes options, taxes, delivery and registration.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact" id="contact">
+  <div class="wrap contact__grid">
+    <div>
+      <p class="eyebrow" data-reveal>Contact</p>
+      <h2 class="display" data-reveal>Arrange a <em>private viewing.</em></h2>
+      <p class="lead" data-reveal>Tell us a little about yourself and a specialist will arrange a test drive, a configuration session or a call — whichever suits you.</p>
+      <ul class="contact__list" data-reveal>
+        <li><span>Concierge</span><a href="tel:+15550100199">+1 (555) 010-0199</a></li>
+        <li><span>Email</span><a href="mailto:concierge@example.com">concierge@example.com</a></li>
+        <li><span>Showroom</span><em>1 Example Avenue, Your City</em></li>
+        <li><span>Hours</span><em>Mon–Sat · 9:00–18:00</em></li>
+      </ul>
+    </div>
+
+    <form class="form" id="contactForm" novalidate data-reveal>
+      <div class="field"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" required></div>
+      <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="phone">Phone <small>(optional)</small></label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="field"><label for="interest">I'm interested in</label>
+        <select id="interest" name="interest">
+          <option>Test drive</option><option>Speed</option><option>Speed · Tour</option><option>Speed · Blackline</option><option>Configuration session</option><option>Something else</option>
+        </select>
+      </div>
+      <div class="field field--full"><label for="message">Message</label><textarea id="message" name="message" rows="4"></textarea></div>
+      <button class="btn btn--gold field--full" type="submit">Send enquiry</button>
+      <p class="form__note field--full" id="formNote" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__brand">
+      <img src="assets/logo.png" alt="Bentley" height="64">
+      <p>Extraordinary grand touring, engineered with hybrid power.</p>
+    </div>
+    <nav aria-label="Explore"><h4>Explore</h4><a href="#film">The Film</a><a href="#overview">Performance</a><a href="#details">Details</a><a href="#specs">Specs</a></nav>
+    <nav aria-label="Ownership"><h4>Ownership</h4><a href="#pricing">Pricing</a><a href="#contact">Test drive</a><a href="#contact">Brochure</a><a href="#contact">Find a centre</a></nav>
+    <nav aria-label="Follow"><h4>Follow</h4><a href="#" rel="noopener">Instagram</a><a href="#" rel="noopener">YouTube</a><a href="#" rel="noopener">LinkedIn</a><a href="#" rel="noopener">X</a></nav>
+  </div>
+  <div class="wrap footer__legal">
+    <p>© <span id="year">2026</span> Concept website · Not an official Bentley Motors site. Bentley, the Winged&nbsp;B and related marks are trademarks of Bentley Motors Limited.</p>
+    <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
+  </div>
+</footer>
+
+<!-- Libraries (pinned, from cdnjs) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
