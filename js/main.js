@@ -8,12 +8,12 @@
 
   /* ---------- Config ---------- */
   const CFG = {
-    frames: 313,                       // number of extracted frames (10 fps of the 25 s film)
+    frames: 626,                       // number of extracted frames (10 fps of the 25 s film)
     src: (i) => `assets/frames/f_${String(i + 1).padStart(4, '0')}.webp`,
     duration: 25,                      // seconds, for the HUD timecode
-    smoothing: 4,                      // frame follow: lower = floatier / smoother
-    wheelStep: 0.75,                   // mouse-wheel distance multiplier (lower = slower)
-    wheelEase: 5,                      // wheel glide: lower = longer, softer glide
+    smoothing: 3.5,                      // frame follow: lower = floatier / smoother
+    wheelStep: 0.65,                   // mouse-wheel distance multiplier (lower = slower)
+    wheelEase: 4.5,                     // wheel glide: lower = longer, softer glide
     contactEmail: 'concierge@example.com' // enquiry form opens a mail draft to this address
   };
 
@@ -42,16 +42,32 @@
     });
   }
 
-  function preload(onProgress) {
-    const queue = Array.from({ length: CFG.frames }, (_, i) => i);
-    let done = 0;
+  // Coarse-to-fine order (every 8th frame, then 4th, 2nd, rest): the page can start as soon as
+  // the coarse pass is in, and every scroll position already has a near neighbour to show.
+  function loadOrder() {
+    const seen = new Set(), out = [];
+    for (const step of [8, 4, 2, 1]) for (let i = 0; i < CFG.frames; i += step) if (!seen.has(i)) { seen.add(i); out.push(i); }
+    return out;
+  }
+  function pick(i) {
+    if (frames[i]) return frames[i];
+    for (let d = 1; d < 24; d++) { if (frames[i - d]) return frames[i - d]; if (frames[i + d]) return frames[i + d]; }
+    return null;
+  }
+
+  function preload(onProgress, onReady) {
+    const queue = loadOrder();
+    const readyAt = Math.ceil(CFG.frames / 4); // coarse passes (8 and 4) done -> safe to start
+    let done = 0, ready = false;
     const worker = async () => {
       while (queue.length) {
         await loadFrame(queue.shift());
-        onProgress(++done / CFG.frames);
+        done++;
+        if (!ready && done >= readyAt) { ready = true; onReady(); }
+        onProgress(Math.min(1, done / readyAt));
       }
     };
-    return Promise.all(Array.from({ length: 8 }, worker));
+    return Promise.all(Array.from({ length: 10 }, worker));
   }
 
   /* ---------- Renderers ---------- */
@@ -106,10 +122,10 @@
         t.minFilter = THREE.LinearFilter; t.magFilter = THREE.LinearFilter; t.generateMipmaps = false;
         return t;
       };
-      this.tA = mk(); this.tB = mk(); this.iA = -1; this.iB = -1; this.errs = 0;
+      this.tA = mk(); this.tB = mk(); this.errs = 0;
       this.uniforms = {
         uA: { value: this.tA }, uB: { value: this.tB }, uMix: { value: 0 }, uVel: { value: 0 }, uTime: { value: 0 },
-        uRes: { value: new THREE.Vector2(1, 1) }, uImg: { value: new THREE.Vector2(1920, 1080) }, uPointer: { value: new THREE.Vector2(.5, .5) }
+        uRes: { value: new THREE.Vector2(1, 1) }, uImg: { value: new THREE.Vector2(1600, 900) }, uPointer: { value: new THREE.Vector2(.5, .5) }
       };
       const mat = new THREE.ShaderMaterial({ vertexShader: VERT, fragmentShader: FRAG, uniforms: this.uniforms, depthTest: false, depthWrite: false });
       const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat);
@@ -123,14 +139,16 @@
       this.uniforms.uRes.value.copy(s);
     }
     set(i, j) {
-      if (i === this.iA && j === this.iB) return;
-      // moving forward: old B becomes new A, so we re-upload only one texture
-      if (i === this.iB || j === this.iA) {
-        [this.tA, this.tB] = [this.tB, this.tA]; [this.iA, this.iB] = [this.iB, this.iA];
+      const a = pick(i), b = pick(j);
+      if (!a || !b) return;
+      if (this.tA.image === a && this.tB.image === b) return;
+      // moving along the sequence: reuse the texture that already holds the needed image
+      if (this.tA.image === b || this.tB.image === a) {
+        [this.tA, this.tB] = [this.tB, this.tA];
         this.uniforms.uA.value = this.tA; this.uniforms.uB.value = this.tB;
       }
-      if (i !== this.iA && frames[i]) { this.tA.image = frames[i]; this.tA.needsUpdate = true; this.iA = i; }
-      if (j !== this.iB && frames[j]) { this.tB.image = frames[j]; this.tB.needsUpdate = true; this.iB = j; }
+      if (this.tA.image !== a) { this.tA.image = a; this.tA.needsUpdate = true; }
+      if (this.tB.image !== b) { this.tB.image = b; this.tB.needsUpdate = true; }
     }
     draw(f, vel, time, pointer) {
       const i = Math.floor(f), j = Math.min(i + 1, CFG.frames - 1);
@@ -163,8 +181,8 @@
       const i = Math.floor(f), j = Math.min(i + 1, CFG.frames - 1), m = f - i;
       const zoom = 1.03 + Math.min(Math.abs(vel), 1) * 0.02;
       this.ctx.globalAlpha = 1; this.ctx.fillStyle = '#000'; this.ctx.fillRect(0, 0, this.cv.width, this.cv.height);
-      this.paint(frames[i], zoom);
-      if (m > 0.02 && j !== i) { this.ctx.globalAlpha = m; this.paint(frames[j], zoom); this.ctx.globalAlpha = 1; }
+      this.paint(pick(i), zoom);
+      if (m > 0.02 && j !== i) { this.ctx.globalAlpha = m; this.paint(pick(j), zoom); this.ctx.globalAlpha = 1; }
     }
   }
 
@@ -419,13 +437,10 @@
     }
   }
 
-  // Safety net: never trap the visitor behind the loader on slow connections
-  const bail = setTimeout(() => { if (frames[0]) reveal(); }, 20000);
   preload((p) => {
-    const pct = Math.round(p * 100);
-    loaderPct.textContent = pct;
+    loaderPct.textContent = Math.round(p * 100);
     loaderBar.style.transform = `scaleX(${p})`;
-  }).then(() => { clearTimeout(bail); reveal(); });
+  }, reveal);
 
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 })();

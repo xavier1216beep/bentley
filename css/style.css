@@ -108,7 +108,7 @@ button { font: inherit; color: inherit; }
 .mobile-menu .btn { margin-top: 28px; }
 
 /* ============ Film (scroll-driven stage) ============ */
-.film { position: relative; height: 2400vh; background: #000; }
+.film { position: relative; height: 2800vh; background: #000; }
 .stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: #000; }
 #gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .stage__grain { position: absolute; inset: 0; pointer-events: none;
@@ -279,7 +279,7 @@ button { font: inherit; color: inherit; }
   .footer__brand { grid-column: 1 / -1; }
 }
 @media (max-width: 640px) {
-  .film { height: 1800vh; }
+  .film { height: 2200vh; }
   .chapter { padding-bottom: 80px; }
   .chapter--left, .chapter--right { justify-content: flex-end; align-items: flex-start; text-align: left; }
   .chapter--left::before, .chapter--right::before { background: linear-gradient(0deg, rgba(0,0,0,.88) 0%, rgba(0,0,0,.6) 45%, transparent 80%); }
