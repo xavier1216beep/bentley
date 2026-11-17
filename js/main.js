@@ -376,16 +376,27 @@
       onEnter: (els) => gsap.to(els, { y: 0, autoAlpha: 1, duration: 1.1, ease: 'power3.out', stagger: 0.09, overwrite: true })
     });
 
-    // horizontal gallery
+    // horizontal gallery — CSS sticky (no pin-spacer), so later layout shifts can't make it overlap neighbours
+    const hs = $('#details');
     const track = $('#track');
-    const pin = $('.hscroll__pin');
-    if (track) {
+    if (hs && track) {
       const dist = () => Math.max(0, track.scrollWidth - window.innerWidth + 2 * parseFloat(getComputedStyle(track).paddingLeft));
+      const sizeHs = () => { hs.style.height = (dist() + window.innerHeight) + 'px'; };
+      sizeHs();
       gsap.to(track, {
         x: () => -dist(), ease: 'none',
-        scrollTrigger: { trigger: pin, start: 'top top', end: () => '+=' + dist(), scrub: 0.8, pin: true, anticipatePin: 1, invalidateOnRefresh: true }
+        scrollTrigger: {
+          trigger: hs, start: 'top top', end: 'bottom bottom', scrub: 0.8, invalidateOnRefresh: true,
+          onRefreshInit: sizeHs
+        }
       });
     }
+
+    // fonts / late images change section heights: re-measure once everything has settled
+    const settle = () => ScrollTrigger.refresh();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(settle);
+    window.addEventListener('load', settle);
+    setTimeout(settle, 1500);
   }
 
   /* ---------- Plan buttons → prefill form ---------- */
@@ -427,6 +438,10 @@
     setupPage();
     if (hasGSAP) {
       ScrollTrigger.refresh();
+      const refresh = () => ScrollTrigger.refresh();
+      window.addEventListener('load', refresh);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+      setTimeout(refresh, 1500); setTimeout(refresh, 5000);
       const hero = chapters[0];
       gsap.fromTo($$('.line > span', hero), { yPercent: 118 }, { yPercent: 0, duration: 1.4, ease: 'power4.out', stagger: .12, delay: .35 });
       gsap.fromTo($$('[data-fade]', hero), { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: 'power3.out', stagger: .12, delay: .8 });
