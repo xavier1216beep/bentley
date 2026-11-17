@@ -187,8 +187,9 @@ button { font: inherit; color: inherit; }
 .stat span { display: block; margin-top: 12px; font: 500 11px/1.4 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
 
 /* Horizontal gallery */
-.hscroll { background: var(--bg-2); position: relative; }
-.hscroll__pin { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; gap: 44px; padding: calc(var(--nav-h) + 10px) 0 40px; overflow: hidden; }
+.hscroll { background: var(--bg-2); position: relative; z-index: 2; }
+.overview { z-index: 1; }
+.hscroll__pin { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; flex-direction: column; justify-content: center; gap: 44px; padding: calc(var(--nav-h) + 10px) 0 40px; overflow: hidden; }
 .hscroll__head { padding-inline: var(--gutter); }
 .hscroll__track { display: flex; gap: clamp(16px, 2vw, 28px); padding-inline: var(--gutter); width: max-content; will-change: transform; }
 .card { position: relative; flex: none; width: clamp(280px, 38vw, 560px); aspect-ratio: 16 / 11; overflow: hidden; border-radius: 6px; background: #000; }
